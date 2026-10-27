@@ -1,0 +1,16 @@
+{
+  "name": "site-cgt-sema",
+  "version": "1.0.0",
+  "description": "Site web du syndicat CGT-SEMA de Montpellier",
+  "scripts": {
+    "dev": "npx @11ty/eleventy --serve --port 8080",
+    "build": "npx @11ty/eleventy"
+  },
+  "keywords": ["cgt", "sema", "syndicat", "montpellier"],
+  "author": "CGT-SEMA",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "@11ty/eleventy": "^3.1.7"
+  }
+}

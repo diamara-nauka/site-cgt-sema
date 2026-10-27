@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{ title | default("CGT-SEMA Montpellier — Syndicat des bureaux d'études") }}</title>
+  <meta name="description" content="{{ description | default("Le syndicat CGT-SEMA de Montpellier organise et défend les salarié·es des bureaux d'études. Rejoignez-nous pour des revendications communes et une solidarité concrète.") }}" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="site-header" id="site-header">
+    <div class="header-inner">
+      <a href="/" class="logo" id="logo">
+        <span class="logo-cgt">CGT</span><span class="logo-sep">—</span><span class="logo-sema">SEMA</span>
+      </a>
+      <nav class="nav" id="main-nav">
+        <a href="/#presentation" class="nav-link">Qui sommes-nous</a>
+        <a href="/#organisation" class="nav-link">Organisation</a>
+        <a href="/#actions" class="nav-link">Nos actions</a>
+        <a href="/contact/" class="btn btn-contact" id="btn-contact">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          Nous contacter
+        </a>
+      </nav>
+      <button class="mobile-toggle" id="mobile-toggle" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+    {{ content | safe }}
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer" id="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="footer-logo"><span class="logo-cgt">CGT</span><span class="logo-sep">—</span><span class="logo-sema">SEMA</span></span>
+        <p class="footer-tagline">Syndicat des salarié·es des bureaux d'études — Montpellier</p>
+      </div>
+      <div class="footer-links">
+        <h4>Navigation</h4>
+        <a href="/">Accueil</a>
+        <a href="/#presentation">Qui sommes-nous</a>
+        <a href="/#organisation">Organisation</a>
+        <a href="/contact/">Contact</a>
+      </div>
+      <div class="footer-contact">
+        <h4>Nous retrouver</h4>
+        <p>Maison des Syndicats</p>
+        <p>Montpellier, France</p>
+        <a href="/contact/" class="footer-cta">Écrire au syndicat →</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; {{ year }} CGT-SEMA Montpellier — Tous droits réservés</p>
+    </div>
+  </footer>
+
+  <script>
+    // Sticky header
+    const header = document.getElementById('site-header');
+    window.addEventListener('scroll', () => {
+      header.classList.toggle('scrolled', window.scrollY > 50);
+    });
+
+    // Mobile menu
+    const toggle = document.getElementById('mobile-toggle');
+    const nav = document.getElementById('main-nav');
+    toggle.addEventListener('click', () => {
+      toggle.classList.toggle('active');
+      nav.classList.toggle('open');
+    });
+
+    // Close mobile menu on link click
+    nav.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        toggle.classList.remove('active');
+        nav.classList.remove('open');
+      });
+    });
+
+    // Scroll reveal
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
