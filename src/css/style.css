@@ -416,14 +416,6 @@ h1, h2, h3, h4 {
   margin-bottom: 20px;
 }
 
-.section-label::before {
-  content: '';
-  width: 32px;
-  height: 2px;
-  background: var(--cgt-red);
-  border-radius: 1px;
-}
-
 .section-title {
   font-size: clamp(2rem, 4vw, 3rem);
   letter-spacing: -1px;
@@ -823,15 +815,7 @@ h1, h2, h3, h4 {
   box-shadow: var(--shadow-md);
 }
 
-.contact-form-wrapper::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 3px;
-  background: linear-gradient(to right, var(--cgt-red), var(--cgt-red-dark), var(--cgt-red));
-}
+
 
 .form-group {
   margin-bottom: 24px;
